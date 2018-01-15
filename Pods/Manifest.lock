@@ -1,0 +1,21 @@
+PODS:
+  - Alamofire (4.5.0)
+  - KeychainAccess (3.0.2)
+  - Nuke (6.0)
+  - Pastel (0.3.0)
+
+DEPENDENCIES:
+  - Alamofire
+  - KeychainAccess
+  - Nuke (~> 6.0)
+  - Pastel
+
+SPEC CHECKSUMS:
+  Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
+  KeychainAccess: a986406022dfc7c634c691ad3bec670cc6a32002
+  Nuke: d83812262734dad51e3c498cb1c4f7923f2b78c6
+  Pastel: 738740c84f2b15bbcd96ebe99c4e6c2f5dd42262
+
+PODFILE CHECKSUM: 432bcd8d481102b4c53319bbe57cbf8283d2355f
+
+COCOAPODS: 1.1.1
