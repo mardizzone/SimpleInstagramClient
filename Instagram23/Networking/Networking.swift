@@ -11,6 +11,7 @@ class Networking {
     
     class func requestRecentDataFromInstagram(completionHandler : @escaping (InstagramData) -> Void) {
         guard let token = KeychainHelper.shared.retrieveAccessToken() else {return}
+        print(token)
         let params: Parameters = ["access_token" : token]
         Alamofire.request("https://api.instagram.com/v1/users/self/media/recent/", method: .get, parameters: params, encoding: URLEncoding.default, headers: nil).responseData { response in
             switch response.result {

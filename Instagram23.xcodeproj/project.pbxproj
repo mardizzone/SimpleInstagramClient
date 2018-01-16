@@ -19,7 +19,6 @@
 		7FC863BE200C9EA500DF0F06 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FC863BD200C9EA500DF0F06 /* TableViewCell.xib */; };
 		7FCD5B08200805AA0024A8A7 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCD5B06200805AA0024A8A7 /* TableViewCell.swift */; };
 		7FCD5B0B200834410024A8A7 /* ParseJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCD5B0A200834410024A8A7 /* ParseJSON.swift */; };
-		7FCD5B0D20084D6E0024A8A7 /* ScratchFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCD5B0C20084D6E0024A8A7 /* ScratchFunctions.swift */; };
 		7FCD5B0F200A90660024A8A7 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCD5B0E200A90660024A8A7 /* Router.swift */; };
 		7FCD5B12200B409F0024A8A7 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCD5B11200B409F0024A8A7 /* PhotosViewController.swift */; };
 		7FCD5B16200C875D0024A8A7 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCD5B15200C875D0024A8A7 /* Networking.swift */; };
@@ -43,7 +42,6 @@
 		7FC863BD200C9EA500DF0F06 /* TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		7FCD5B06200805AA0024A8A7 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		7FCD5B0A200834410024A8A7 /* ParseJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseJSON.swift; sourceTree = "<group>"; };
-		7FCD5B0C20084D6E0024A8A7 /* ScratchFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScratchFunctions.swift; sourceTree = "<group>"; };
 		7FCD5B0E200A90660024A8A7 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		7FCD5B11200B409F0024A8A7 /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
 		7FCD5B15200C875D0024A8A7 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
@@ -101,7 +99,6 @@
 			isa = PBXGroup;
 			children = (
 				7F233AFF2006D37F00FB71A5 /* AppDelegate.swift */,
-				7FCD5B0C20084D6E0024A8A7 /* ScratchFunctions.swift */,
 				7FCD5B1D200C94520024A8A7 /* Services */,
 				7FCD5B1C200C94330024A8A7 /* Utilities */,
 				7FCD5B1B200C93FA0024A8A7 /* Networking */,
@@ -318,7 +315,6 @@
 				7FCD5B08200805AA0024A8A7 /* TableViewCell.swift in Sources */,
 				7F233B002006D37F00FB71A5 /* AppDelegate.swift in Sources */,
 				7F233B162007EDD300FB71A5 /* KeychainHelper.swift in Sources */,
-				7FCD5B0D20084D6E0024A8A7 /* ScratchFunctions.swift in Sources */,
 				7FCD5B16200C875D0024A8A7 /* Networking.swift in Sources */,
 				7F233B122006ED5100FB71A5 /* Constants.swift in Sources */,
 			);

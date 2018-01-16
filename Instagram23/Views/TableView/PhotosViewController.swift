@@ -35,9 +35,8 @@ class PhotosViewController: UIViewController {
     
     func setupTableView() {
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 350
+        tableView.estimatedRowHeight = 640
         tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "tableViewCell")
-         UserDefaults.standard.setValue(false, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")
         Networking.requestRecentDataFromInstagram(completionHandler: { results in
             self.postData.append(contentsOf: results.data)
             self.tableView.reloadData()
@@ -63,9 +62,6 @@ class PhotosViewController: UIViewController {
         pastelView.startAnimation()
         view.insertSubview(pastelView, at: 0)
     }
-    
-    
-    
 
 }
 
@@ -87,16 +83,24 @@ extension PhotosViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
-    private func configure(_ cell: TableViewCell, atIndexPath indexPath: IndexPath) {
-        let imageURL = postData[indexPath.row].images.low_resolution.url
-        let url = URL(string: imageURL)!
-        let request = Request(url: url, targetSize: CGSize(width: 300, height: 200), contentMode: .aspectFill)
-        cell.id = postData[indexPath.row].id
-        cell.isLiked = postData[indexPath.row].user_has_liked
-        Manager.shared.loadImage(with: request, into: cell.instaImageView)
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UIScreen.main.bounds.width
     }
     
+    private func configure(_ cell: TableViewCell, atIndexPath indexPath: IndexPath) {
+        let imageURL = postData[indexPath.row].images.standard_resolution.url
+        let url = URL(string: imageURL)!
+
+        cell.id = postData[indexPath.row].id
+        cell.isLiked = postData[indexPath.row].user_has_liked
+        var request = Request(url: url)
+//        request.progress = { completed, total in
+//            self.tableView.reloadRows(at: [indexPath], with: .fade)
+//        }
+        Manager.shared.loadImage(with: request, into: cell.instaImageView)
+    }
 }
+
 // MARK: - Search Function
 extension PhotosViewController: UISearchBarDelegate {
     
