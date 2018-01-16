@@ -20,7 +20,7 @@ struct InstagramData : Codable {
 struct ImageInfo : Codable {
     let images : ImageResolutions
     let id : String
-    let user_has_liked : Bool
+    var user_has_liked : Bool
 }
 
 struct ImageResolutions : Codable {

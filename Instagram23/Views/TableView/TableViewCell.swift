@@ -8,11 +8,18 @@
 import UIKit
 import Alamofire
 
+protocol ImageInfoDelegate {
+    func likePhoto(at row: Int)
+    func unlikePhoto(at row: Int)
+}
 
-class TableViewCell: UITableViewCell {
+class TableViewCell: UITableViewCell  {
+    
+    var delegate: ImageInfoDelegate?
     
     @IBOutlet var likeButton: UIButton!
     @IBOutlet var instaImageView: UIImageView!
+    var rowNumber : Int?
     var id : String?
     var isLiked : Bool? {
         didSet {
@@ -32,17 +39,23 @@ class TableViewCell: UITableViewCell {
     @IBAction func likeButtonTapped(_ sender: UIButton) {
         likeOrDislikePhoto()
     }
-
     
     private func likeOrDislikePhoto() {
+        //we update the UI when the user taps the heart icon, but if the API request to instagram fails, we have to change the UI back
         if isLiked == false {
-            likeButton.setImage(#imageLiteral(resourceName: "redHeart"), for: .normal)
-            isLiked = true
-            InstagramService.likePhoto(with: id)
+            updateUItoShowLikedImage()
+            InstagramService.likePhoto(with: id, completionHandler: {success in
+                if !success {
+                    self.updateUItoShowUnLikedImage()
+                }
+            })
         } else {
-            likeButton.setImage(#imageLiteral(resourceName: "whiteHeartLight"), for: .normal)
-            isLiked = false
-            InstagramService.dislikePhoto(with: id)
+            updateUItoShowUnLikedImage()
+            InstagramService.dislikePhoto(with: id, completionHandler: { success in
+                if !success {
+                    self.updateUItoShowLikedImage()
+                }
+            })
         }
     }
     
@@ -55,6 +68,21 @@ class TableViewCell: UITableViewCell {
         }
     }
     
+    private func updateUItoShowLikedImage() {
+        if let rowIndex = self.rowNumber {
+            self.delegate?.likePhoto(at: rowIndex)
+        }
+        self.likeButton.setImage(#imageLiteral(resourceName: "redHeart"), for: .normal)
+        self.isLiked = true
+    }
+    
+    private func updateUItoShowUnLikedImage() {
+        if let rowIndex = self.rowNumber {
+            self.delegate?.unlikePhoto(at: rowIndex)
+        }
+        self.likeButton.setImage(#imageLiteral(resourceName: "whiteHeartLight"), for: .normal)
+        self.isLiked = false
+    }
     
 }
 

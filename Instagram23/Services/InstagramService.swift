@@ -12,7 +12,7 @@ import Alamofire
 
 class InstagramService {
     
-    class func likePhoto(with id: String?) {
+    class func likePhoto(with id: String?, completionHandler: @escaping ((Bool) -> ())) {
         guard let token = KeychainHelper.shared.retrieveAccessToken() else {return}
         let requestParams: Parameters = ["access_token" : token]
         if let photoID = id {
@@ -20,25 +20,27 @@ class InstagramService {
                 response in
                 switch response.result {
                 case .success:
-                    print(response)
+                    completionHandler(true)
                 case .failure(let error):
                     print(error)
+                    completionHandler(false)
                 }
             }
         }
     }
     
-    class func dislikePhoto(with id: String?) {
+    class func dislikePhoto(with id: String?, completionHandler: @escaping ((Bool) -> ())) {
         guard let token = KeychainHelper.shared.retrieveAccessToken() else {return}
         let requestParams: Parameters = ["access_token" : token]
         if let photoID = id {
             Alamofire.request("https://api.instagram.com/v1/media/\(photoID)/likes", method: .delete, parameters: requestParams, encoding: URLEncoding.default).responseJSON {
                 response in
-                switch response.result {
+            switch response.result {
                 case .success:
-                    print(response)
+                    completionHandler(true)
                 case .failure(let error):
                     print(error)
+                    completionHandler(false)
                 }
             }
         }

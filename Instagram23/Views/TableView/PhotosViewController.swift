@@ -12,9 +12,10 @@ import WebKit
 import Pastel
 
 class PhotosViewController: UIViewController {
+
     
     var postData = [ImageInfo]()
-
+    
     @IBOutlet var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -40,6 +41,8 @@ class PhotosViewController: UIViewController {
         Networking.requestRecentDataFromInstagram(completionHandler: { results in
             self.postData.append(contentsOf: results.data)
             self.tableView.reloadData()
+            
+            
         })
     }
     
@@ -78,6 +81,7 @@ extension PhotosViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tableViewCell", for: indexPath) as! TableViewCell
         configure(cell, atIndexPath: indexPath)
+        cell.delegate = self
         return cell
     }
     
@@ -90,6 +94,7 @@ extension PhotosViewController: UITableViewDataSource, UITableViewDelegate {
         let url = URL(string: imageURL)!
         cell.id = postData[indexPath.row].id
         cell.isLiked = postData[indexPath.row].user_has_liked
+        cell.rowNumber = indexPath.row
         let request = Request(url: url)
         Manager.shared.loadImage(with: request, into: cell.instaImageView)
     }
@@ -112,3 +117,17 @@ extension PhotosViewController: UISearchBarDelegate {
         view.endEditing(true)
     }
 }
+
+//Mark: - Protocol Functions
+//Modify our tableview data once the user has like or unliked an image
+//If the request to the Instagram API fails, we'll have to change it back
+extension PhotosViewController: ImageInfoDelegate {
+    func likePhoto(at row: Int) {
+        postData[row].user_has_liked = true
+    }
+    
+    func unlikePhoto(at row: Int) {
+        postData[row].user_has_liked = false
+    }
+}
+
