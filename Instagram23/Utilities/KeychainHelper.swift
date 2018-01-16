@@ -9,6 +9,8 @@
 import Foundation
 import KeychainAccess
 
+//class used for storing the access token
+
 class KeychainHelper {
 
     static let shared = KeychainHelper()

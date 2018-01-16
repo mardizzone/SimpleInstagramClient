@@ -21,12 +21,14 @@ class Networking {
                 }
             case .failure(let error):
                 if error.localizedDescription.contains(find: "OAuthAccessTokenException") {
-                    //we have an expired token. Present login screen
+                    //have the user login again if the token is expired
+                    InstagramRouter.showInstagramPhotosView()
                 }
             }
         }
     }
     
+    //We could implement this function in the future when we are outside of Sandbox mode
     class func searchInstagram(searchTerm: String, completionHandler : @escaping (InstagramData) -> Void) {
         guard let token = KeychainHelper.shared.retrieveAccessToken() else {return}
         let params: Parameters = ["access_token" : token]

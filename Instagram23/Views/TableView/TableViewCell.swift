@@ -27,8 +27,6 @@ class TableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
     @IBAction func likeButtonTapped(_ sender: UIButton) {
@@ -48,6 +46,7 @@ class TableViewCell: UITableViewCell {
         }
     }
     
+    //set the image of the button based on it's liked state
     private func setupLikeButton() {
         if self.isLiked == true {
             likeButton.setImage(#imageLiteral(resourceName: "redHeart"), for: .normal)

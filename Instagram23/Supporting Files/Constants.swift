@@ -8,6 +8,8 @@
 
 import Foundation
 
+//constants used in the authorization request
+
 struct Constants {
     struct Instagram {
         static let authorizationURLRequest : URLRequest = {

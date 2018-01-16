@@ -44,14 +44,12 @@ class PhotosViewController: UIViewController {
     }
     
     func setupBackGround() {
+        //Sets up the gradient background
         let pastelView = PastelView(frame: view.bounds)
-        // Custom Direction
         pastelView.startPastelPoint = .bottomLeft
         pastelView.endPastelPoint = .topRight
-        // Custom Duration
         self.hideKeyboardWhenTappedAround()
         pastelView.animationDuration = 3.0
-        // Custom Color
         pastelView.setColors([UIColor(red: 156/255, green: 39/255, blue: 176/255, alpha: 1.0),
                               UIColor(red: 255/255, green: 64/255, blue: 129/255, alpha: 1.0),
                               UIColor(red: 123/255, green: 31/255, blue: 162/255, alpha: 1.0),
@@ -65,8 +63,8 @@ class PhotosViewController: UIViewController {
 
 }
 
+//MARK: - Tableview Delegate
 extension PhotosViewController: UITableViewDataSource, UITableViewDelegate {
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -90,20 +88,16 @@ extension PhotosViewController: UITableViewDataSource, UITableViewDelegate {
     private func configure(_ cell: TableViewCell, atIndexPath indexPath: IndexPath) {
         let imageURL = postData[indexPath.row].images.standard_resolution.url
         let url = URL(string: imageURL)!
-
         cell.id = postData[indexPath.row].id
         cell.isLiked = postData[indexPath.row].user_has_liked
-        var request = Request(url: url)
-//        request.progress = { completed, total in
-//            self.tableView.reloadRows(at: [indexPath], with: .fade)
-//        }
+        let request = Request(url: url)
         Manager.shared.loadImage(with: request, into: cell.instaImageView)
     }
 }
 
 // MARK: - Search Function
 extension PhotosViewController: UISearchBarDelegate {
-    
+    //handle the behavior of the search and keyboard when interacting with search bar
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.endEditing(true)
         print("not implemented, seach API endpoint not enabled in Sandbox mode")

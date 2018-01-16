@@ -29,6 +29,7 @@ extension String {
     }
 }
 
+//we don't want the access token to be left over in the URL once it's removed
 class WebCacheCleaner {
     class func clean() {
         HTTPCookieStorage.shared.removeCookies(since: Date.distantPast)

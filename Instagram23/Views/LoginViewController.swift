@@ -44,8 +44,10 @@ class ViewController: UIViewController {
     }
     
 }
+//MARK: - WKNavigation
 
 extension ViewController: WKNavigationDelegate {
+    //store access token once we have authenticated
     func webView(_ webView: WKWebView, didReceiveServerRedirectForProvisionalNavigation navigation: WKNavigation!) {
         storeAccessTokenAndShowPhotosVC(webView)
     }

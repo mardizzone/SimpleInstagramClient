@@ -11,6 +11,8 @@
 import Foundation
 import Alamofire
 
+//Use structs to parse JSON - new in Swift 4
+
 struct InstagramData : Codable {
     let data : [ImageInfo]
 }

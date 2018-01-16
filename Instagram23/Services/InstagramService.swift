@@ -8,6 +8,8 @@
 
 import Alamofire
 
+//requests to perform liking and disliking of the photos
+
 class InstagramService {
     
     class func likePhoto(with id: String?) {
