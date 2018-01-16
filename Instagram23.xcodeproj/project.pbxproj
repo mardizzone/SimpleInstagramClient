@@ -99,12 +99,12 @@
 			isa = PBXGroup;
 			children = (
 				7F233AFF2006D37F00FB71A5 /* AppDelegate.swift */,
-				7FCD5B1D200C94520024A8A7 /* Services */,
-				7FCD5B1C200C94330024A8A7 /* Utilities */,
-				7FCD5B1B200C93FA0024A8A7 /* Networking */,
-				7FCD5B1A200C93A90024A8A7 /* Storyboards */,
 				7FCD5B19200C93880024A8A7 /* Views */,
 				7FCD5B18200C93620024A8A7 /* Models */,
+				7FCD5B1B200C93FA0024A8A7 /* Networking */,
+				7FCD5B1D200C94520024A8A7 /* Services */,
+				7FCD5B1A200C93A90024A8A7 /* Storyboards */,
+				7FCD5B1C200C94330024A8A7 /* Utilities */,
 				7FCD5B17200C93210024A8A7 /* Supporting Files */,
 			);
 			path = Instagram23;

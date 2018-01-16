@@ -9,9 +9,6 @@
 import UIKit
 import WebKit
 
-
-
-
 class ViewController: UIViewController {
     
     @IBOutlet var spinner: UIActivityIndicatorView!

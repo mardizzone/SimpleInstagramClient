@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 class InstagramRouter {
+    //Handle our router logic
     
     class func showInitialViewController() {
         if KeychainHelper.shared.retrieveAccessToken() != nil {
